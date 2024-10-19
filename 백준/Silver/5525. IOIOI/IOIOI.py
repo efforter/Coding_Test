@@ -5,13 +5,17 @@ n = int(input())
 m = int(input())
 s = input().rstrip()
 
-cor = 'IOI' + (n-1) * 'OI'
-result = 0
+point, count, result = 0, 0, 0
 
-for i in range(m-(n*2)):
-    temp = ''
-    for j in range(i,i+n*2+1):
-        temp += s[j]
-    if temp == cor:
-        result+=1
+while point < (m - 1):
+    if s[point:point + 3] == 'IOI':
+        count += 1
+        point += 2
+        if count == n:
+            result += 1
+            count -= 1
+    else:
+        point += 1
+        count = 0
+
 print(result)
